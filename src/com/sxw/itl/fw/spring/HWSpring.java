@@ -1,20 +1,19 @@
 /**
  * 
  */
-package com.sxw.itl;
+package com.sxw.itl.fw.spring;
 
 /**
  * 
  * @author stephenxianweizhang@gmail.com
- *
+ * 
  */
-public final class ITTechlifeVV {
+public final class HWSpring {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 
