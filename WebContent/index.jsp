@@ -7,6 +7,10 @@
 <title>Welcome to ITTechlife</title>
 </head>
 <body>
+<div id="headerDiv"></div>
+
+<div id="bodyLeftDiv"></div>
+<div  id="bodyDiv"></div>
 	<h1>Welcome to ITTechlife!</h1>
 
 <p>
@@ -17,5 +21,7 @@
 		border="0" width="120">
 
 	</a>
+<div id="bodyRigthDiv"></div>
+<div  id="footerDiv"></div>
 </body>
 </html>
