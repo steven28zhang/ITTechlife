@@ -11,6 +11,7 @@ public class RegUser {
 
 	private String userName;
 	private String password;
+	private String status;
 
 	/**
 	 * @return the userName
