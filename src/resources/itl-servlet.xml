@@ -4,10 +4,22 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+		<property name="prefix">
+			<value>/WEB-INF/jsp/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+    
     <bean name="login"
 		class="com.sxw.itl.sso.web.controllers.Login">
-		<!-- <property name="authenticate" ref="authenticate"/>
-		<property name="cookieHelper" ref="cookieHelper"/> -->
+		<property name="authenticate" ref="authenticate"/>
+		<!-- <property name="cookieHelper" ref="cookieHelper"/> -->
 	</bean>
 
 	<bean name="logout"

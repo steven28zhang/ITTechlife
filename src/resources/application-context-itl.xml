@@ -3,8 +3,58 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<bean id="dataSource" class="org.postgresql.ds.PGPoolingDataSource">
+		<property name="serverName" value="127.0.0.1" />
+		<property name="databaseName" value="itl" />
+		<property name="portNumber" value="5432" />
+		<property name="user" value="itl" />
+		<property name="password" value="Compuware" />
+	</bean>
 
-    
-    <bean id="authenticate" class="com.sxw.itl.sso.aa.AuthenticationImpl"></bean>
-    
+	<bean id="connectionPool"
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="staticMethod" value="com.sxw.itl.db.ConnectionPool.setDataSource" />
+		<property name="arguments">
+			<list>
+				<ref bean="dataSource" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="mySessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>itl.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.HSQLDialect
+			</value>
+		</property>
+	</bean>
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:initial.properties" />
+	</bean>
+
+	<bean id="contextFilter" class="com.sxw.itl.web.filters.ContextFilter"></bean>
+
+	<bean id="authenticate" class="com.sxw.itl.sso.aa.AuthenticationImpl">
+		<property name="rmiClientObject" ref="rmiClientObject"></property>
+	</bean>
+
+
+	<bean id="rmiClientObject" class="com.sxw.itl.ws.client.rmi.RMIClientObject">
+		<property name="accountService" ref="accountService"></property>
+	</bean>
+
+	<bean id="accountService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="rmi://localhost:1009/AccountService" />
+		<property name="serviceInterface" value="com.sxw.itl.ws.services.AccountService" />
+	</bean>
+	<!-- -->
 </beans>

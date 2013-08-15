@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.covisint.css.core.config.properties.PropertyBean" table="properties">
+        <id name="propertyId" column="property_id" type="java.lang.Long" unsaved-value="null">
+            <generator class="native"/>
+        </id>
+        <property name="propertyName" column="property_name" type="java.lang.String" not-null="true"/>
+        <property name="propertyValue"  column="property_value"  type="java.lang.String"/>
+        <property name="applicationName"  column="application_name"  type="java.lang.String"/>
+        <property name="description"  column="description"  type="java.lang.String"/>
+        <property name="groupName"  column="group_name"  type="java.lang.String"/>
+        <property name="hostName"  column="host_name"  type="java.lang.String"/>
+        <property name="contextType"  column="context_type"  type="java.lang.String"/>
+        <property name="contextId"  column="context_code"  type="java.lang.String"/>
+        <property name="lastUpdatedOn"  column="last_upd_dt"  type="java.sql.Timestamp"/>
+        <property name="lastUpdatedBy"  column="last_upd_user_id"  type="java.lang.Long"/>
+    </class>
+
+    <class name="com.covisint.css.core.config.text.TextGroupBean" table="label_groups">
+        <id name="groupId" column="LABEL_GROUP_ID" type="java.lang.Long" unsaved-value="null">
+            <generator class="native"/>
+        </id>
+       	<property name="applicationId" column="APP_ID" type="java.lang.Long" not-null="true"/>
+       	<property name="text" column="LABEL" type="java.lang.String" not-null="true"/>
+       	<property name="pageTitle" column="PAGE_TITLE" type="java.lang.String"/>
+    </class>
+
+    <class name="com.covisint.cca.language.Language" table="languages">
+        <id name="ID" column="LANGUAGE_ID" type="java.lang.Integer" unsaved-value="null">
+            <generator class="native"/>
+        </id>
+       	<property name="ISOLocale" column="ISO_LOCALE" type="java.lang.String" not-null="false"/>
+       	<property name="NLSLanguage" column="NLS_LANGUAGE" type="java.lang.String" not-null="false"/>
+       	<property name="NLSCountry" column="NLS_TERRITORY" type="java.lang.String" not-null="false"/>
+       	<property name="commonName" column="COMMON_NAME" type="java.lang.String" not-null="false"/>
+    </class>
+
+    <class name="com.covisint.css.core.config.text.TextBean" table="language_labels">
+        <id name="textId" column="LANGUAGE_LABEL_ID" type="java.lang.Long" unsaved-value="null">
+            <generator class="native"/>
+        </id>
+        <property name="groupId" column="LABEL_GROUP_ID" type="java.lang.Long" not-null="true"/>
+        <property name="languageId" column="LANGUAGE_ID" type="java.lang.Long" not-null="true"/>
+        <property name="contextType"  column="context_type"  type="java.lang.String"/>
+        <property name="contextId"  column="context_code"  type="java.lang.String"/>
+        <property name="text"  column="label"  type="java.lang.String"/>
+        <property name="value"  column="value"  type="java.lang.String"/>
+        <property name="helpText"  column="help_text"  type="java.lang.String"/>
+        <property name="lastUpdatedOn"  column="last_upd_dt"  type="java.sql.Timestamp"/>
+    </class>
+
+    <class name="com.covisint.tif.entity.user.AttributeContextBean" table="attribute_context">
+    	<id name="attributeId" column="attribute_id" type="java.lang.Long">
+            <generator class="native"/>
+    	</id>
+        <property name="contextType"  column="context_type"  type="java.lang.String"/>
+        <property name="contextId"  column="context_code"  type="java.lang.String"/>
+        <property name="active" column="is_active" type="true_false"/>
+        <property name="lastUpdatedOn"  column="last_upd_dt"  type="java.sql.Timestamp"/>
+        <property name="lastUpdatedBy"  column="last_upd_user_id"  type="java.lang.Long"/>
+    </class>
+
+    <class name="com.covisint.tif.config.ApplicationConfiguration" table="app_configurations">
+    	<id name="code" column="configuration_code" type="java.lang.String">
+            <generator class="native"/>
+    	</id>
+        <property name="name"  column="configuration_name"  type="java.lang.String"/>
+        <property name="perspective"  column="perspective_code"  type="java.lang.String"/>
+        <property name="realm"  column="realm_code"  type="java.lang.String"/>
+        <property name="idpCode"  column="idp_code"  type="java.lang.String"/>
+        <property name="url"  column="url"  type="java.lang.String"/>
+    </class>
+
+    <class name="com.covisint.tif.usergroups.UserGroupBean" table="user_groups">
+    	<id name="groupId" column="user_group_id" type="java.lang.Long">
+            <generator class="native"/>
+    	</id>
+        <property name="groupCode"  column="group_code"  type="java.lang.String"/>
+        <property name="groupName"  column="group_name_eng"  type="java.lang.String"/>
+        <property name="description"  column="description"  type="java.lang.String"/>
+        <property name="realm"  column="realm_code"  type="java.lang.String"/>
+        <property name="rule"  column="rule"  type="java.lang.String"/>
+        <property name="lastUpdatedOn"  column="last_upd_dt"  type="java.sql.Timestamp"/>
+        <property name="lastUpdatedBy"  column="last_upd_user_id"  type="java.lang.Long"/>
+    </class>
+    
+	<class name="com.covisint.tif.entity.application.ApplicationAccessLevelBean" table="package_access_level">
+    	<composite-id>
+    		<key-property name="packageId" column="package_id" type="java.lang.Long" />
+    		<key-property name="accessLevel"  column="access_level"  type="java.lang.String"/>
+        	<key-property name="realmCode"  column="realm_code"  type="java.lang.String"/>
+    	</composite-id>
+        <property name="description"  column="description"  type="java.lang.String"/>
+        <property name="rule"  column="availability_rule"  type="java.lang.String"/>
+        <property name="lastUpdDt"  column="last_upd_dt"  type="java.sql.Timestamp"/>
+        <property name="lastUpdUserId"  column="last_upd_user_id"  type="java.lang.Long"/>
+    </class>
+    
+</hibernate-mapping>
