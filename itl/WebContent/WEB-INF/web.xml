@@ -8,7 +8,7 @@
      	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath:resources/application-context-itl.xml
+			classpath:application-context-itl.xml
 		</param-value>
 	</context-param>
 

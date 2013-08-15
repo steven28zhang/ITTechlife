@@ -46,15 +46,23 @@
 	<bean id="authenticate" class="com.sxw.itl.sso.aa.AuthenticationImpl">
 		<property name="rmiClientObject" ref="rmiClientObject"></property>
 	</bean>
+	<!-- WS1:RMI -->
+	<!-- <bean id="rmiClientObject" class="com.sxw.itl.ws.client.rmi.RMIClientObject"> 
+		<property name="accountService" ref="accountService"></property> </bean> 
+		<bean id="accountService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean"> 
+		<property name="serviceUrl" value="rmi://localhost:1009/AccountService" /> 
+		<property name="serviceInterface" value="com.sxw.itl.ws.services.AccountService" 
+		/> </bean> -->
 
-
+	<!-- WS2: WS2:Using Hessian or Burlap to remotely call services via HTTP -->
 	<bean id="rmiClientObject" class="com.sxw.itl.ws.client.rmi.RMIClientObject">
 		<property name="accountService" ref="accountService"></property>
 	</bean>
-
-	<bean id="accountService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-		<property name="serviceUrl" value="rmi://localhost:1009/AccountService" />
+	<bean id="accountService"
+		class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl"
+			value="http://localhost:7070/remoting/AccountService" />
 		<property name="serviceInterface" value="com.sxw.itl.ws.services.AccountService" />
 	</bean>
-	<!-- -->
+
 </beans>
