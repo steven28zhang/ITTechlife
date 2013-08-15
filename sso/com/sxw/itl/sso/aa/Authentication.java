@@ -3,6 +3,8 @@
  */
 package com.sxw.itl.sso.aa;
 
+import com.sxw.itl.entities.user.RegUser;
+
 /**
  * @author stephenxianweizhang@gmail.com
  * 
@@ -22,6 +24,6 @@ public interface Authentication {
 	 *            optional
 	 * @return
 	 */
-	String authenticate(final String username, final String password,
+	RegUser authenticate(final String userName, final String password,
 			final String verCode, final String type);
 }
