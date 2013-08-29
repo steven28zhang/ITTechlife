@@ -27,11 +27,11 @@
   <input name="bgresponse" id="bgresponse" value="js_disabled" type="hidden">
 <div class="email-div">
   <label for="Email"><strong class="email-label">UserName</strong></label>
-  <input spellcheck="false" name="UserName" id="Email" value="" type="email">
+  <input spellcheck="false" name="userName" id="userName" value="" type="email">
 </div>
 <div class="passwd-div">
   <label for="Passwd"><strong class="passwd-label">Password</strong></label>
-  <input name="Passwd" id="Passwd" type="password">
+  <input name="password" id="password" type="password">
 </div>
   <input class="g-button g-button-submit" name="signIn" id="signIn" value="Sign in" type="submit">
   <label class="remember" onclick="">
