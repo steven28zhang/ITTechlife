@@ -41,7 +41,7 @@ public class AuthenticationImpl implements Authentication {
 			// Step2: validate the password
 			if (password.trim().equals(r.getPassword())) {
 				// Step3: validate the status
-				if (r.getStatus() == UserStatus.ACTIVE) {
+				if (r.getStatus() == UserStatus.ACTIVE.value()) {
 					return r;
 				}
 			}
