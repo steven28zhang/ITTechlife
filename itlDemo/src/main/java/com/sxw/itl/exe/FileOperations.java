@@ -47,6 +47,7 @@ public class FileOperations {
 	}
 
 	/**
+	 * "o,l,l,e,h" to "hello" <br>
 	 * 
 	 * @param content
 	 * @param splitSign

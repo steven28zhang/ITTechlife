@@ -45,13 +45,24 @@ public class FileOperationsTest extends BasedTest {
 
 	@Test(expected = FileNotFoundException.class)
 	public void testReverseOrderOfFileContentFileNotExist() throws IOException {
-		fo.reverseOrderOfFileContent("", SPLIT_SIGN);
+		fo.reverseOrderOfFileContent(fileName+"change", SPLIT_SIGN);
 	}
 
 	@Test
 	public void testReverseOrderString() {
-		String content = "o|w|t";
+		// more than one split signs
+		String content = "o" + SPLIT_SIGN + "w" + SPLIT_SIGN + "t";
 		assertEquals("two", fo.reverseOrderString(content, SPLIT_SIGN));
+		// only one split sign
+		content = "k" + SPLIT_SIGN + "o";
+		assertEquals("ok", fo.reverseOrderString(content, SPLIT_SIGN));
+	}
+
+	@Test
+	public void testReverseOrderStringNull() {
+		assertEquals(null, fo.reverseOrderString("", SPLIT_SIGN));
+		assertEquals(null, fo.reverseOrderString(null, SPLIT_SIGN));
+
 	}
 
 }
