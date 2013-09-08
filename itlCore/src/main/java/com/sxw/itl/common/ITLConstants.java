@@ -18,4 +18,9 @@ public class ITLConstants {
 
 		public static final String PUBLIC_ABOUTME = "public/aboutMe";
 	}
+
+	public interface Symbols {
+		public static final String SYMBOL_COMMA = ".";
+
+	}
 }

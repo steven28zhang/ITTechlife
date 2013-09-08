@@ -70,6 +70,10 @@ public class ConnectionPool {
 		return connection;
 	}
 
+	/**
+	 * 
+	 * @param connection
+	 */
 	public static void releaseConnection(final Connection connection) {
 
 		if (connection != null) {
