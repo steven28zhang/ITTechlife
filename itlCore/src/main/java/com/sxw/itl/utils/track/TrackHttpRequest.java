@@ -35,12 +35,12 @@ public class TrackHttpRequest {
 		sb.append("Locale:").append(httpServletRequest.getLocale().toString())
 				.append(":").append(httpServletRequest.getLocalAddr());
 		sb.append("\n");
-		try {
-			sb.append("body of the request:")
-					.append(httpServletRequest.getReader().toString())
-					.append(":");
-		} catch (IOException e) {
-		}
+//		try {
+//			sb.append("body of the request:")
+//					.append(httpServletRequest.getReader().toString())
+//					.append(":");
+//		} catch (IOException e) {
+//		}
 		sb.append("\n");
 		sb.append("server:").append(httpServletRequest.getScheme()).append(":")
 				.append(httpServletRequest.getServerName()).append(":")

@@ -3,6 +3,11 @@
  */
 package com.sxw.itl.utils.io.file;
 
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -27,6 +32,42 @@ public final class FileOperations {
 					.indexOf(Symbols.SYMBOL_COMMA) + 1);
 		}
 		return fileType;
+	}
+	
+	/**
+	 * read the uploaded file<br>
+	 * 
+	 * @param uploadedFile
+	 * @return
+	 * @throws IOException
+	 */
+	public static final byte[] readUploadFile(File uploadedFile)
+			throws IOException {
+		FileInputStream fileInput = new FileInputStream(uploadedFile);
+		byte[] readFile = new byte[fileInput.available()];
+		fileInput.read(readFile);
+		fileInput.close();
+		return readFile;
+	}
+
+	/**
+	 * 
+	 * @param in
+	 * @param formDataLength
+	 * @return
+	 * @throws IOException
+	 */
+	public static final byte[] readUploadFileInputStream(final DataInputStream in,
+			final int formDataLength) throws IOException {
+		byte[] readFile = new byte[formDataLength];
+		int byteRead = 0;
+		int totalBytesRead = 0;
+		// this loop converting the uploaded file into byte code
+		while (totalBytesRead < formDataLength) {
+			byteRead = in.read(readFile, totalBytesRead, formDataLength);
+			totalBytesRead += byteRead;
+		}
+		return readFile;
 	}
 
 	/**
