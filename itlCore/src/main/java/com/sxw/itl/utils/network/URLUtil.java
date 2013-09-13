@@ -62,7 +62,30 @@ public final class URLUtil {
 	public static String baiduPlaceSearch(final String queryWords,
 			final String region, final String outputType) {
 		String result = "";
+		final String url = BaiduKeys.PLACE_SEARCH_DEMO;
+		try {
+			URL url_ = new URL(url);
+			url_.openConnection();
+			result = ApacheIOUtils.convertInputStreamToString(url_
+					.openConnection().getInputStream());
+		} catch (java.net.ConnectException e) {
+			e.printStackTrace();
+			try {
+				URL url_ = new URL(url);
+				url_.openConnection(proxy);
+				result = ApacheIOUtils.convertInputStreamToString(url_
+						.openConnection(proxy).getInputStream());
+			} catch (MalformedURLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
+		} catch (IOException e) {
+
+		}
 		return result;
 	}
 
@@ -100,6 +123,7 @@ public final class URLUtil {
 			result = ApacheIOUtils.convertInputStreamToString(url_
 					.openConnection().getInputStream());
 		} catch (java.net.ConnectException e) {
+			e.printStackTrace();
 			try {
 				URL url_ = new URL(url);
 				url_.openConnection(proxy);

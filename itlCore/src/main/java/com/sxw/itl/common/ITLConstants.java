@@ -9,8 +9,19 @@ package com.sxw.itl.common;
  */
 public class ITLConstants {
 
-	public static String proxyHost = "";
-	public static int proxyPort = 0;
+	public static String proxyHost = "172.28.48.13";
+	public static int proxyPort = 3128;
+	public static String securityEncryptionSeed = "sztechlife";
+	public static int securityDefaultLength = 128;
+	public static String securityDefaultTransformation = "AES";
+	public static String MD5Transformation = "MD5";
+	public static String AESTransformation = "AES";
+
+	public interface EncrptionMode {
+
+		public static final String ENCRYPT_MODE = "encrypt";
+		public static final String DECRYPT_MODE = "decrypt";
+	}
 
 	public interface EncrptionType {
 		public static final String MDFIVE = "MD5";
@@ -42,7 +53,7 @@ public class ITLConstants {
 	}
 
 	public interface BaiduKeys {
-		public static final String HOURSINGAK = "31882976d363f4154e602f8e1c60858533";
+		public static final String HOURSINGAK = "388976d363f4154e602f8e1c60858533";
 		public static final int HOURSINGAK_MAX_DAILY = 100000;
 		public static final String PLACE_SEARCH = "http://api.map.baidu.com/place/v2/search";
 		/**
@@ -92,7 +103,7 @@ public class ITLConstants {
 		 * sn 否 无 用户的权限签名。<br>
 		 * timestamp 否 无 设置sn后该值必填。<br>
 		 */
-		public static final String PLACE_SEARCH_DEMO = "http://api.map.baidu.com/place/v2/search?&q=饭店&region=北京&output=json&ak=E4805d16520de693a3fe707cdc962045";
+		public static final String PLACE_SEARCH_DEMO = "http://api.map.baidu.com/place/v2/search?&q=%E4%B8%9C%E6%96%B9%E6%98%8E%E7%8F%A0&region=%E4%B8%8A%E6%B5%B7&output=json&ak=388976d363f4154e602f8e1c60858533";
 		public static final String PLACE_DETAIL = "http://api.map.baidu.com/place/v2/detail";
 		public static final String PLACE_SUGGESTION = "http://api.map.baidu.com/place/v2/suggestion/";
 		/**
@@ -104,7 +115,7 @@ public class ITLConstants {
 		 * sn 否 无 E4805d16520de693a3fe707cdc962045 用户的权限签名<br>
 		 * timestamp 否 无 E4805d16520de693a3fe707cdc962045 设置sn后该值必选<br>
 		 */
-		public static final String PLACE_SUGGESTION_DEMO = "http://api.map.baidu.com/place/v2/suggestion?query=%E5%A4%A9%E5%AE%89%E9%97%A8&region=131%20&output=json&ak=E4805d16520de693a3fe707cdc962045";
+		public static final String PLACE_SUGGESTION_DEMO = "http://api.map.baidu.com/place/v2/suggestion?query=%E5%A4%A9%E5%AE%89%E9%97%A8&region=131%20&output=json&ak=388976d363f4154e602f8e1c60858533";
 		// public static final String PLACE_SEARCH="";
 	}
 }

@@ -3,8 +3,7 @@
  */
 package com.sxw.itl.utils.security.encryption;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import com.sun.org.apache.xml.internal.security.utils.Base64;
 
 /**
  * @author Stephen
@@ -16,26 +15,11 @@ public class MDFiveJava {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		if (args != null && args.length > 0) {
-			for (String arg : args) {
-				StringBuffer sb = new StringBuffer();
-				try {
-					MessageDigest mg = MessageDigest.getInstance("MD5");
-					mg.update(arg.getBytes());
-					byte[] mdbytes = mg.digest();
-
-					for (int i = 0; i < mdbytes.length; i++) {
-						sb.append(Integer.toString((mdbytes[i] & 0xff) + 0x100,
-								16).substring(1));
-					}
-					System.out.println("arg:" + arg + ":|" + sb.toString()
-							+ "|");
-				} catch (NoSuchAlgorithmException e) {
-
-				}
-			}
-		}
-
+		String str1 = "sztechlife";
+		String str2 = "stephenxianweizhangtechlifestephenxianweizhangtechlifestephenxianweizhangtechlife";
+		String v1 = new String(Base64.encode(MDFiveEncryption.getMD5Digest(str1)));
+		String v2 = new String(Base64.encode(MDFiveEncryption.getMD5Digest(str2)));
+		System.out.println(str1 + " :||:" + v1);
+		System.out.println(str2 + " :||:" + v2);
 	}
-
 }
