@@ -13,12 +13,14 @@ import com.sxw.itl.utils.network.udp.UDPUtil;
  * 
  */
 public class Testing {
-
+    private final static String STRING_LENGTH_81="abcdefghijklmnopqrstuvwxyz28abcdefghijklmnopqrstuvwxyz56abcdefghijklmnopqrstuvwxy";
+    private final static String STRING_LENGTH_129="abcdefghijklmnopqrstuvwxyz28abcdefghijklmnopqrstuvwxyz56abcdefghijklmnopqrstuvwxyz84abcdefghijklmno|abcdefghijklmnopqrstuvwxyz129";
+    private final static String STRING_LENGTH_258=STRING_LENGTH_129+STRING_LENGTH_129;
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		tTCPUtil();
+		System.out.println(STRING_LENGTH_81.length());
 	}
 
 	private static void tTCPUtil() {
