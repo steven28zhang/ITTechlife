@@ -5,6 +5,7 @@ package com.sxw.itl.common;
 
 import java.io.IOException;
 
+import com.sxw.itl.utils.network.URLUtil;
 import com.sxw.itl.utils.network.tcp.TCPUtil;
 import com.sxw.itl.utils.network.udp.UDPUtil;
 
@@ -20,7 +21,7 @@ public class Testing {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println(STRING_LENGTH_81.length());
+		System.out.println(URLUtil.surfing("http://www.gutenberg.org/ebooks/search/?query=computing"));
 	}
 
 	private static void tTCPUtil() {
