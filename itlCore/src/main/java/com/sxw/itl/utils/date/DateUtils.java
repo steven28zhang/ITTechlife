@@ -14,8 +14,9 @@ import java.util.Date;
 public final class DateUtils {
 
     public static void main(String[] args) {
-        System.out.println(new Date() + ":|:" + System.currentTimeMillis());
-        System.out.println(formatDate("E yyyy.MM.dd 'at' hh:mm:ss a zzz", null));
+        System.out.println(new Date() + ":|:" + System.currentTimeMillis()+":|:"+new Date().toString());
+        Date d=parseDate("yyyyMMddHHmmss.SSSSZZZZ","20131022013310.0235-0700");
+        System.out.println(d+":|:"+d.getTime()+":|:"+new Date(d.getTime()));
     }
 
     /**
