@@ -1,0 +1,88 @@
+{
+	"type":["object","string"],
+	"$schema": "http://json-schema.org/draft-04/schema",
+	"properties":{
+	   "recordId": {
+			"type":"string",
+			"required":false
+		},
+	   "patientId": {
+			"type":"string",
+			"required":false
+		},
+	   "sourceTpId": {
+			"type":"string",
+			"required":false
+		},
+		"valueType": {
+			"type":"string",
+			"required":false
+		},
+		"labEntryCode": {
+			"type":"string",
+			"required":false
+		},
+		"labEntryLabel":
+		{
+			"type":"string",
+			"required":false
+		},
+		"subCode":
+		{
+			"type":"string",
+			"required":false
+		},
+		"value": 
+		{
+			"type":"string",
+			"required":false
+		},
+		"units": {
+			"type":"string",
+			"required":false
+		},
+		"referenceRange": {
+			"type":"string",
+			"required":false
+		},
+		"abnormalFlags": {
+			"type":"string",
+			"required":false
+		},
+		"resultStatus": {
+			"type":"string",
+			"required":false
+		},
+		"observationTime": {
+			"type":"string",
+			"required":false
+		},
+		"observer":
+		{
+			"type":"array",
+			"items":{
+			"type":"object",
+			"properties":{
+				"id":
+				{
+					"type":"string",
+					"required":false
+				},
+			   	"lastName": {
+					"type":"string",
+					"required":false
+				},
+				"firstName":
+				{
+					"type":"string",
+					"required":false
+				}
+			}	
+		  }
+		},
+		"observationMethod":{
+			"type":"string",
+			"required":false
+		}
+	}
+}

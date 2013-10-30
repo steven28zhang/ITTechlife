@@ -9,113 +9,104 @@ package com.sxw.itl.common;
  */
 public class ITLConstants {
 
-	public static String proxyHost = "172.28.48.13";
-	public static int proxyPort = 3128;
-	public static String securityEncryptionSeed = "sztechlife";
-	public static int securityDefaultLength = 128;
-	public static String securityDefaultTransformation = "AES";
-	public static String MD5Transformation = "MD5";
-	public static String AESTransformation = "AES";
+    public static String proxyHost = "172.28.48.13";
+    public static int proxyPort = 3128;
+    public static String securityEncryptionSeed = "sztechlife";
+    public static int securityDefaultLength = 128;
+    public static String securityDefaultTransformation = "AES";
+    public static String MD5Transformation = "MD5";
+    public static String AESTransformation = "AES";
 
-	public interface EncrptionMode {
+    public interface ErrorCodes {
+        String argumentException = "5001";
+    }
 
-		public static final String ENCRYPT_MODE = "encrypt";
-		public static final String DECRYPT_MODE = "decrypt";
-	}
+    public interface EncrptionMode {
 
-	public interface EncrptionType {
-		public static final String MDFIVE = "MD5";
-	}
+        public static final String ENCRYPT_MODE = "encrypt";
+        public static final String DECRYPT_MODE = "decrypt";
+    }
 
-	public interface Pages {
-		public static final String SSO_LOGIN_PAGE = "sso/login";
+    public interface EncrptionType {
+        public static final String MDFIVE = "MD5";
+    }
 
-		public static final String PUBLIC_ABOUTME = "public/aboutMe";
-	}
+    public interface Pages {
+        public static final String SSO_LOGIN_PAGE = "sso/login";
 
-	public interface Symbols {
-		public static final String SYMBOL_COMMA = ".";
+        public static final String PUBLIC_ABOUTME = "public/aboutMe";
+    }
 
-	}
+    public interface Symbols {
+        public static final String SYMBOL_COMMA = ".";
 
-	public interface OutputType {
+    }
 
-		public static final String OUTPUT_XML = "xml";
-		public static final String OUTPUT_XML_UPPER = "XML";
-		public static final String OUTPUT_JSON = "json";
-		public static final String OUTPUT_JSON_UPPER = "JSON";
+    public interface OutputType {
 
-	}
+        public static final String OUTPUT_XML = "xml";
+        public static final String OUTPUT_XML_UPPER = "XML";
+        public static final String OUTPUT_JSON = "json";
+        public static final String OUTPUT_JSON_UPPER = "JSON";
 
-	public interface Encoding {
+    }
 
-		public static final String UTF8STR = "UTF-8";
-	}
+    public interface Encoding {
 
-	public interface BaiduKeys {
-		public static final String HOURSINGAK = "388976d363f4154e602f8e1c60858533";
-		public static final int HOURSINGAK_MAX_DAILY = 100000;
-		public static final String PLACE_SEARCH = "http://api.map.baidu.com/place/v2/search";
-		/**
-		 * 参数 是否必须 默认值 格式举例 含义<br>
-		 * q(query) 是 无 中关村、ATM、百度大厦 检索关键字<br>
-		 * tag 否 无 日式烧烤/铁板烧、朝外大街 标签项，与q组合进行检索<br>
-		 * output 否 xml json或xml 输出格式为json或者xml<br>
-		 * scope 是 1 1、2 检索结果详细程度。取值为1 或空，则返回基本信息；取值为2，返回检索POI详细信息<br>
-		 * filter 否 无 filter=industry_type:cater|sort_name:price|sort_rule:0|
-		 * price_section:100,200|groupon:0|discount:0
-		 * 检索过滤条件，当scope取值为2时，可以设置filter进行排序。<br>
-		 * industry_type：行业类型<br>
-		 * 注意：设置该字段可提高检索速度和过滤精度。<br>
-		 * industry_type取值如下：<br>
-		 * hotel:宾馆<br>
-		 * cater:餐饮<br>
-		 * life:生活娱乐<br>
-		 * sort_name：排序字段<br>
-		 * 取值根据industry_type字段的值而定。<br>
-		 * (1)industry_type为hotel时，sort_name取值：<br>
-		 * default:默认；<br>
-		 * price:价格<br>
-		 * total_score:好评<br>
-		 * level：星级<br>
-		 * health_score：卫生<br>
-		 * distance:距离排序，只有周边检索有效<br>
-		 * (2)industry_type取值cater时，sort_name取值：<br>
-		 * default：默认<br>
-		 * taste_rating：口味<br>
-		 * price：价格<br>
-		 * overall_rating：好评<br>
-		 * service_rating：服务<br>
-		 * distance:距离排序，只有周边检索有效<br>
-		 * (3)industry_type取值life时，sort_name取值：<br>
-		 * default：默认<br>
-		 * price：价格<br>
-		 * overall_rating：好评<br>
-		 * comment_num：服务<br>
-		 * distance：距离排序，只有周边检索有<br>
-		 * sort_rule：排序规则，取值如下：0：从高到低，1：从低到高；<br>
-		 * price_section：价格区间；<br>
-		 * groupon：是否有团购，1为有团购，0为无团购；<br>
-		 * discount：是否打折，1为有打折，0为无打折；<br>
-		 * page_size 否 10 10 返回记录数量，默认为10条记录，最大返回结果为20条。<br>
-		 * page_num 否 0 0、1、2 分页页码，默认为0,0代表第一页，1代表第二页，以此类推。<br>
-		 * ak 是 无 E4805d16520de693a3fe707cdc962045 用户的访问密钥，必填项。v2之前该属性为key。<br>
-		 * sn 否 无 用户的权限签名。<br>
-		 * timestamp 否 无 设置sn后该值必填。<br>
-		 */
-		public static final String PLACE_SEARCH_DEMO = "http://api.map.baidu.com/place/v2/search?&q=%E4%B8%9C%E6%96%B9%E6%98%8E%E7%8F%A0&region=%E4%B8%8A%E6%B5%B7&output=json&ak=388976d363f4154e602f8e1c60858533";
-		public static final String PLACE_DETAIL = "http://api.map.baidu.com/place/v2/detail";
-		public static final String PLACE_SUGGESTION = "http://api.map.baidu.com/place/v2/suggestion/";
-		/**
-		 * 参数名称 是否必须 默认值 格式 备注<br>
-		 * q(query) 是 无 上地、天安、中关、shanghai 输入建议关键字（支持拼音）<br>
-		 * region 是 无 全国、北京市、131、江苏省等 所属城市/区域名称或代号<br>
-		 * output 否 xml json、xml 返回数据格式，可选json、xml两种<br>
-		 * ak 是 无 E4805d16520de693a3fe707cdc962045 开发者访问密钥，必选。<br>
-		 * sn 否 无 E4805d16520de693a3fe707cdc962045 用户的权限签名<br>
-		 * timestamp 否 无 E4805d16520de693a3fe707cdc962045 设置sn后该值必选<br>
-		 */
-		public static final String PLACE_SUGGESTION_DEMO = "http://api.map.baidu.com/place/v2/suggestion?query=%E5%A4%A9%E5%AE%89%E9%97%A8&region=131%20&output=json&ak=388976d363f4154e602f8e1c60858533";
-		// public static final String PLACE_SEARCH="";
-	}
+        public static final String UTF8STR = "UTF-8";
+    }
+
+    public interface BaiduKeys {
+        public static final String HOURSINGAK = "388976d363f4154e602f8e1c60858533";
+        public static final int HOURSINGAK_MAX_DAILY = 100000;
+        public static final String PLACE_SEARCH = "http://api.map.baidu.com/place/v2/search";
+        /**
+         * 鍙傛暟 鏄惁蹇呴』 榛樿鍊�鏍煎紡涓句緥 鍚箟<br>
+         * q(query) 鏄�鏃�涓叧鏉戙�ATM銆佺櫨搴﹀ぇ鍘�妫�储鍏抽敭瀛�br> tag 鍚�鏃�鏃ュ紡鐑х儰/閾佹澘鐑с�鏈濆澶ц
+         * 鏍囩椤癸紝涓巕缁勫悎杩涜妫�储<br>
+         * output 鍚�xml json鎴杧ml 杈撳嚭鏍煎紡涓簀son鎴栬�xml<br>
+         * scope 鏄�1 1銆� 妫�储缁撴灉璇︾粏绋嬪害銆傚彇鍊间负1
+         * 鎴栫┖锛屽垯杩斿洖鍩烘湰淇℃伅锛涘彇鍊间负2锛岃繑鍥炴绱OI璇︾粏淇℃伅<br>
+         * filter 鍚�鏃�filter=industry_type:cater|sort_name:price|sort_rule:0|
+         * price_section:100,200|groupon:0|discount:0
+         * 妫�储杩囨护鏉′欢锛屽綋scope鍙栧�涓�鏃讹紝鍙互璁剧疆filter杩涜鎺掑簭銆�br>
+         * industry_type锛氳涓氱被鍨�br> 娉ㄦ剰锛氳缃瀛楁鍙彁楂樻绱㈤�搴﹀拰杩囨护绮惧害銆�br>
+         * industry_type鍙栧�濡備笅锛�br> hotel:瀹鹃<br>
+         * cater:椁愰ギ<br>
+         * life:鐢熸椿濞变箰<br>
+         * sort_name锛氭帓搴忓瓧娈�br> 鍙栧�鏍规嵁industry_type瀛楁鐨勫�鑰屽畾銆�br>
+         * (1)industry_type涓篽otel鏃讹紝sort_name鍙栧�锛�br> default:榛樿锛�br> price:浠锋牸<br>
+         * total_score:濂借瘎<br>
+         * level锛氭槦绾�br> health_score锛氬崼鐢�br> distance:璺濈鎺掑簭锛屽彧鏈夊懆杈规绱㈡湁鏁�br>
+         * (2)industry_type鍙栧�cater鏃讹紝sort_name鍙栧�锛�br> default锛氶粯璁�br>
+         * taste_rating锛氬彛鍛�br> price锛氫环鏍�br> overall_rating锛氬ソ璇�br>
+         * service_rating锛氭湇鍔�br> distance:璺濈鎺掑簭锛屽彧鏈夊懆杈规绱㈡湁鏁�br>
+         * (3)industry_type鍙栧�life鏃讹紝sort_name鍙栧�锛�br> default锛氶粯璁�br>
+         * price锛氫环鏍�br> overall_rating锛氬ソ璇�br> comment_num锛氭湇鍔�br>
+         * distance锛氳窛绂绘帓搴忥紝鍙湁鍛ㄨ竟妫�储鏈�br>
+         * sort_rule锛氭帓搴忚鍒欙紝鍙栧�濡備笅锛�锛氫粠楂樺埌浣庯紝1锛氫粠浣庡埌楂橈紱<br>
+         * price_section锛氫环鏍煎尯闂达紱<br>
+         * groupon锛氭槸鍚︽湁鍥㈣喘锛�涓烘湁鍥㈣喘锛�涓烘棤鍥㈣喘锛�br>
+         * discount锛氭槸鍚︽墦鎶橈紝1涓烘湁鎵撴姌锛�涓烘棤鎵撴姌锛�br> page_size 鍚�10 10
+         * 杩斿洖璁板綍鏁伴噺锛岄粯璁や负10鏉¤褰曪紝鏈�ぇ杩斿洖缁撴灉涓�0鏉°�<br>
+         * page_num 鍚�0 0銆�銆� 鍒嗛〉椤电爜锛岄粯璁や负0,0浠ｈ〃绗竴椤碉紝1浠ｈ〃绗簩椤碉紝浠ユ绫绘帹銆�br> ak
+         * 鏄�鏃�E4805d16520de693a3fe707cdc962045
+         * 鐢ㄦ埛鐨勮闂瘑閽ワ紝蹇呭～椤广�v2涔嬪墠璇ュ睘鎬т负key銆�br> sn 鍚�鏃�鐢ㄦ埛鐨勬潈闄愮鍚嶃�<br>
+         * timestamp 鍚�鏃�璁剧疆sn鍚庤鍊煎繀濉�<br>
+         */
+        public static final String PLACE_SEARCH_DEMO = "http://api.map.baidu.com/place/v2/search?&q=%E4%B8%9C%E6%96%B9%E6%98%8E%E7%8F%A0&region=%E4%B8%8A%E6%B5%B7&output=json&ak=388976d363f4154e602f8e1c60858533";
+        public static final String PLACE_DETAIL = "http://api.map.baidu.com/place/v2/detail";
+        public static final String PLACE_SUGGESTION = "http://api.map.baidu.com/place/v2/suggestion/";
+        /**
+         * 鍙傛暟鍚嶇О 鏄惁蹇呴』 榛樿鍊�鏍煎紡 澶囨敞<br>
+         * q(query) 鏄�鏃�涓婂湴銆佸ぉ瀹夈�涓叧銆乻hanghai 杈撳叆寤鸿鍏抽敭瀛楋紙鏀寔鎷奸煶锛�br> region
+         * 鏄�鏃�鍏ㄥ浗銆佸寳浜競銆�31銆佹睙鑻忕渷绛�鎵�睘鍩庡競/鍖哄煙鍚嶇О鎴栦唬鍙�br> output 鍚�xml json銆亁ml
+         * 杩斿洖鏁版嵁鏍煎紡锛屽彲閫塲son銆亁ml涓ょ<br>
+         * ak 鏄�鏃�E4805d16520de693a3fe707cdc962045 寮�彂鑰呰闂瘑閽ワ紝蹇呴�銆�br> sn
+         * 鍚�鏃�E4805d16520de693a3fe707cdc962045 鐢ㄦ埛鐨勬潈闄愮鍚�br> timestamp
+         * 鍚�鏃�E4805d16520de693a3fe707cdc962045 璁剧疆sn鍚庤鍊煎繀閫�br>
+         */
+        public static final String PLACE_SUGGESTION_DEMO = "http://api.map.baidu.com/place/v2/suggestion?query=%E5%A4%A9%E5%AE%89%E9%97%A8&region=131%20&output=json&ak=388976d363f4154e602f8e1c60858533";
+        // public static final String PLACE_SEARCH="";
+    }
 }
