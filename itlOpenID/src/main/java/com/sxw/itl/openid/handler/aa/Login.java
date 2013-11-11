@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sxw.itl.entities.user.RegUser;
 import com.sxw.itl.openid.handler.BasedHanlders;
+import com.sxw.itl.utils.track.TrackHttpRequest;
 
 /**
  * handle the login part.
@@ -27,30 +28,34 @@ import com.sxw.itl.openid.handler.BasedHanlders;
 @Controller
 public class Login extends BasedHanlders {
 
-	private final Log logger = LogFactory.getLog(getClass());
-	private final String className = getClass().getName();
+    private final Log logger = LogFactory.getLog(getClass());
+    private final String className = getClass().getName();
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model uiModel, HttpServletResponse httpServletResponse) {
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model uiModel, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
 
-		httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-		return "login";
-	}
+        httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        try {
+            TrackHttpRequest.outputHttpRequest(httpServletRequest);
+        } catch (Exception e) {
+        }
+        return "login";
+    }
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginAA(@Valid RegUser regUser, Model uiModel,
-			BindingResult bindingResult,
-			HttpServletResponse httpServletResponse,
-			HttpServletRequest httpServletRequest) {
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String loginAA(@Valid RegUser regUser, Model uiModel, BindingResult bindingResult,
+            HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest) {
+        try {
+            TrackHttpRequest.outputHttpRequest(httpServletRequest);
+        } catch (Exception e) {
+        }
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute(regUser);
+            return "login";
+        }
+        final String methodName = className + ":loginAA:";
+        logger.debug(methodName + "userName:" + regUser.getUserName() + ":password:" + regUser.getPassword());
 
-		if (bindingResult.hasErrors()) {
-			uiModel.addAttribute(regUser);
-			return "login";
-		}
-		final String methodName = className + ":loginAA:";
-		logger.debug(methodName + "userName:" + regUser.getUserName()
-				+ ":password:" + regUser.getPassword());
-
-		return "public/aboutMe";
-	}
+        return "public/aboutMe";
+    }
 }
