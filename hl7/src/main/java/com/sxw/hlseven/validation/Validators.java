@@ -36,7 +36,7 @@ public class Validators {
     public <T> boolean validateJSONObject(T object, Errors errors) {
 
         if (object == null || errors == null) {
-            throw new IllegalArgumentException(ErrorCodes.argumentException);
+            throw new IllegalArgumentException(ErrorCodes.argumentException_5001);
         }
         ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
         javax.validation.Validator validator = validatorFactory.getValidator();

@@ -17,8 +17,20 @@ public class ITLConstants {
     public static String MD5Transformation = "MD5";
     public static String AESTransformation = "AES";
 
+    public interface NumberBin {
+        int bin2power24 = 16777216;
+        int bin2power16 = 65536;
+        int bin2power8 = 256;
+    }
+
     public interface ErrorCodes {
-        String argumentException = "5001";
+        String argumentException_5001 = "5001";
+        String internalServerError_400 = "400";
+        String INVALID_SOURCE_DATATYPE_4120 = "4120";
+    }
+
+    public interface ErrorMessage {
+        String INTERNAL_SERVER_ERROR = "Record submission failed due to internal error";
     }
 
     public interface EncrptionMode {
