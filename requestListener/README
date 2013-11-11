@@ -1,0 +1,13 @@
+0. This jar file is used to monitoring the request and return the feedback.
+
+1. Here is the recommendation about the feedback:
+	A. if the value less than 10, the request should be ok, do nothing;
+	B. if the value less than 201, it's warning, please pause or delay the request;
+	C. if the value less than 501, it's dangerous, please pause or delay the request;
+	D. if the value greater than 501, please drop this;
+ 
+ 2. how to call this?
+ 	A. add the jar file to library of your project;
+ 	B. call {"RequestListener.listening(servletRequest)"}
+ 	
+ 3. It only support web site type now.
