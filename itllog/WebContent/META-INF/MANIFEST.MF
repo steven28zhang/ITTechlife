@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: 
+email: stephenxianweizhang@gmail.com
+Reference:1. EagleEye_130831_pub_new from http://club.alibabatech.org/index.htm
+Reference:2. Dapper, a Large-Scale Distributed Systems Tracing Infrastructure from http://static.googleusercontent.com/external_content/untrusted_dlcp/research.google.com/en/us/pubs/archive/36356.pdf
