@@ -19,19 +19,22 @@ public class Testing {
     private final static String STRING_LENGTH_81 = "abcdefghijklmnopqrstuvwxyz28abcdefghijklmnopqrstuvwxyz56abcdefghijklmnopqrstuvwxy";
     private final static String STRING_LENGTH_129 = "abcdefghijklmnopqrstuvwxyz28abcdefghijklmnopqrstuvwxyz56abcdefghijklmnopqrstuvwxyz84abcdefghijklmno|abcdefghijklmnopqrstuvwxyz129";
     private final static String STRING_LENGTH_258 = STRING_LENGTH_129 + STRING_LENGTH_129;
+    private int hash;
+    
 
     /**
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println("");
-        doTest();
+        Testing t=new Testing();
+        System.out.println(""+t.hash);
+        tHash();
     }
 
     static void doTest() {
         System.out.println(StringUtils.isNotEmptyAndNull(" f "));
-        System.out.println("calcuate: "+(1<<30));
-        //tMapIP();
+        // System.out.println("calcuate: "+(1<<30));
+        // tMapIP();
         // System.out.println("abcd".getBytes()[0]);
         // Object s1 = new String("Hello");
         // Object s2 = new String("Hello");
@@ -43,6 +46,45 @@ public class Testing {
         // System.out.println("none of above");
         // }
 
+    }
+    
+    private static void tHash(){
+        String str = "abcd.efg.hig/cdref.g+hijk-lnm";
+        System.out.println("str:" + str.hashCode());
+        str = "a";
+        System.out.println("str:" + str.hashCode());
+    }
+
+    private static void tString() {
+        String str = "abcd.efg.hig/cdref.g+hijk-lnm";
+        System.out.println("str:" + str);
+        str = str.replaceAll("\\.", "");
+        System.out.println("str:" + str);
+        str = str.replaceAll("/", "");
+        System.out.println("str:" + str);
+        // if (str.lastIndexOf("+") > 0) {
+        str = str.replaceAll("\\+", "");
+        System.out.println("str:" + str);
+        // }
+        // if (str.lastIndexOf("-") > 0) {
+        str = str.replaceAll("-", "");
+        System.out.println("str:" + str);
+        // }
+        // System.out.println("str:"+str.replaceAll("/", ""));
+    }
+
+    private static void tInt() {
+        int i = 31;
+        i ^= 3;
+        System.out.println("i:" + i);
+        i ^= 2;
+        System.out.println("i:" + i);
+        i ^= 1;
+        System.out.println("i:" + i);
+        i ^= 3;
+        System.out.println("i:" + i);
+        i ^= 10;
+        System.out.println("i:" + i);
     }
 
     private static void tMapIP() {

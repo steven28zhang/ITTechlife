@@ -16,9 +16,10 @@ public final class DateUtils {
     public static void main(String[] args) {
         System.out.println(new Date() + ":|:" + System.currentTimeMillis()+":|:"+new Date().toString());
         Date d=parseDate("yyyyMMddHHmmss.SSSSZZZZ","20131022013310.0235-0700");
+        Date d1=parseDate("yyyyMMddHHmmss.SSSSZZZZ","20131022013310.0235-0200");
         Date d2=parseDate("yyyyMMddHHmmssZZZZ","20131022013310-0700");
         Date d3=parseDate("yyyyMMddHHmmss.SSSS","20131022013310.0235");
-        System.out.println(d+":|:"+d.getTime()+":|:"+d2.getTime()+":|:"+d3.getTime());
+        System.out.println(d.getTime()+":|:"+d1.getTime()+":|:"+d2.getTime()+":|:"+d3.getTime());
     }
 
     /**
