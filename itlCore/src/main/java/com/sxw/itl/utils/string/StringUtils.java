@@ -3,8 +3,10 @@
  */
 package com.sxw.itl.utils.string;
 
+import org.apache.commons.lang.StringEscapeUtils;
+
 /**
- * @author Stephen.Zhang@covisint.com
+ * @author stephenxianweizhang@gmail.com
  * 
  */
 public class StringUtils {
@@ -21,5 +23,17 @@ public class StringUtils {
         }
 
         return true;
+    }
+
+    public static void testStringEscapeUtils() {
+        String str = "abcde\\'<>()";
+        System.out.println(str);
+        str = StringEscapeUtils.escapeSql(str);
+        System.out.println(str);
+    }
+
+    public static void main(String[] args) {
+        testStringEscapeUtils();
+
     }
 }

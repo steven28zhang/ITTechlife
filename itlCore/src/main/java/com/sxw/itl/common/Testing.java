@@ -20,15 +20,37 @@ public class Testing {
     private final static String STRING_LENGTH_129 = "abcdefghijklmnopqrstuvwxyz28abcdefghijklmnopqrstuvwxyz56abcdefghijklmnopqrstuvwxyz84abcdefghijklmno|abcdefghijklmnopqrstuvwxyz129";
     private final static String STRING_LENGTH_258 = STRING_LENGTH_129 + STRING_LENGTH_129;
     private int hash;
-    
 
     /**
      * @param args
      */
     public static void main(String[] args) {
-        Testing t=new Testing();
-        System.out.println(""+t.hash);
-        tHash();
+        Testing t = new Testing();
+        System.out.println("" + t.hash);
+        tBoolean();
+    }
+
+    static void tBoolean() {
+        boolean b = true;
+        System.out.println(b ? 1231 : 1237);
+    }
+
+    static void tChar() {
+        char[] cArr = { 'a', 'b', 'z', 'A', 'Z', ',', '.', '/' };
+
+        for (char c : cArr) {
+            System.out.println((int) c);
+        }
+    }
+
+    static void tOperator() {
+        long element = 8589934592l;
+        System.out.println("elementHash:" + (element >>> 32));
+        System.out.println("elementHash:" + element);
+        int elementHash = (int) (element ^ (element >>> 32));
+        System.out.println("elementHash:" + elementHash);
+        Long e = 8589934592L;
+        System.out.println("elementHash:" + e.hashCode());
     }
 
     static void doTest() {
@@ -47,8 +69,8 @@ public class Testing {
         // }
 
     }
-    
-    private static void tHash(){
+
+    private static void tHash() {
         String str = "abcd.efg.hig/cdref.g+hijk-lnm";
         System.out.println("str:" + str.hashCode());
         str = "a";
