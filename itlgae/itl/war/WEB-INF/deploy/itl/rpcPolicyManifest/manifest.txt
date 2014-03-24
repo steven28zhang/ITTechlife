@@ -1,0 +1,3 @@
+# Module itl
+# RPC service class, partial path of RPC policy file
+com.swx.itl.client.GreetingService, 2018F0BAB61DFDDA26B92AF219901BB4.gwt.rpc

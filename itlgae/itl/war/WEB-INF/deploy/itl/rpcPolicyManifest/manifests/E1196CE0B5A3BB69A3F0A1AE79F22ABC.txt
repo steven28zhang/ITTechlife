@@ -1,0 +1,2 @@
+serviceClass: com.swx.itl.client.GreetingService
+path: 2018F0BAB61DFDDA26B92AF219901BB4.gwt.rpc

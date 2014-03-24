@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Stephen Xianwei Zhang [12/06/2013]
+CC BY-NC (NonCommercial)
+email:stephenxianweizhang@gmail.com

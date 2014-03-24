@@ -1,0 +1,134 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Log</title>
+	<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	-->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  $( document ).ready(function() {
+ 
+    var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1;
+	var yyyy = today.getFullYear();
+	if(dd<10){dd='0'+dd;} 
+	if(mm<10){mm='0'+mm;}	
+	today = mm+'/'+dd+'/'+yyyy;
+	//alert(today);
+	$( "#datepicker" ).val(today);
+ 
+});
+  </script>
+</head>
+<body style="align:center">
+    
+	<div>
+	
+	<textarea rows="4" cols="80" id="logWhatID" name="logWhatName" placeholder="What are you doing"></textarea>
+	<br>
+	<textarea  rows="2" cols="80" id="logCommentID" name="logCommentName" placeholder="comments"></textarea>
+	<br>
+	<textarea  rows="2" cols="80" id="logHowID" name="logHowName" placeholder="how does it work"></textarea>
+	<br>
+	<textarea  rows="2" cols="80" id="logWhyID" name="logWhyName" placeholder="Why"></textarea>
+	<br>
+	<textarea  rows="1" cols="80" id="logWhereID" name="logWhereName" placeholder="Where"></textarea><br>
+	
+	<textarea  rows="1" cols="80" id="logLabelID" name="logLabelName" placeholder="Tags or Labels"></textarea>
+	<br>
+	<textarea  rows="1" cols="80" id="logWhoID" name="logWhoName" placeholder="Who"></textarea>
+	<br>
+	<br>
+	<input type="button" value="Generate JSON LOG" onclick="log()"/> &nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="datepicker" placeholder="Date">
+	</div>
+    
+	<p></p>
+	<p></p>
+	<p></p>
+	<div id="">
+	<textarea  rows="8" cols="80" id="showCurrentLog" name="showCurrentLog" placeholder="WHEN,WHO,WHAT,WHY,HOW,WHERE"></textarea>
+	</div>
+    <script>
+ 
+     function log(){
+	 var what=$("#logWhatID").val();
+	 var comment=$("#logCommentID").val();
+	 var how=$("#logHowID").val();
+	 var why=$("#logWhyID").val();
+	 var where=$("#logWhereID").val();
+	 var label=$("#logLabelID").val();
+	 var who=$("#logWhoID").val();
+	 var timeStamp=$.now();
+	 var rTem=Math.floor((Math.random()*1000)+1);
+	 var logID=timeStamp+rTem;
+	 //alert("|"+what+"|"+comment+"|"+how+"|"+why+"|"+timeStamp+"|"+rTem);
+	 var dateV=$("#datepicker").val();
+	 var logStrTmp={"logID":logID,"type":"log","what":what,"comment":comment,"how":how,"why":why,"when":dateV,"who":who,"labels":label};
+	 var logStr=JSON.stringify(logStrTmp);
+	 //alert("alert:"+logStr);
+	 $("#showCurrentLog").html(logStr);
+	 }
+    	
+ 
+    </script>
+	<div>
+	<p></p>
+	<div>
+	<input type="text" onkeydown="" name="fromLoc" id="fromLoc" onblur="cancelQueryFrom()" onfocus="queryFrom()"/><br>
+	<div id="locationListFrom" style="display: none;">
+	<select>
+	<option>pvg-Beijing</option>
+	</select>
+	</div>
+	<input type="text" onkeydown="" name="toLoc" id="toLoc" onblur="cancelQueryTo()" onfocus="queryTo()"/>
+	</div>
+		<script>
+	var waitingFlag=false;
+	var fromInterval;
+	var toInterval;
+	function queryFromLocation(){
+		var fromLoc=$("#fromLoc").val();
+		if(fromLoc.length<2){
+			return false;
+		}else{
+			alert(fromLoc+":call query service");
+		}
+	}
+	function queryFrom(){
+		fromInterval=setInterval(queryFromLocation, 1000)
+		//alert(fromInterval);
+	}
+	function cancelQueryFrom(){
+		window.clearInterval(fromInterval);
+		//alert(fromInterval);
+	}
+	
+	function queryToLocation(){
+		var fromLoc=$("#toLoc").val();
+		if(fromLoc.length<2){
+			return false;
+		}else{
+			alert(fromLoc+":call query service");
+		}
+	}
+	function queryTo(){
+		toInterval=setInterval(queryToLocation, 1000)
+		//alert(toInterval);
+	}
+	function cancelQueryTo(){
+		window.clearInterval(toInterval);
+		//alert(toInterval);
+	}
+	</script>
+	<p></p><p></p>
+	<p><a href="http://www.weibo.com/stephenks">Stephen Xianwei Zhang</a></p>
+	</div>
+</body>
+</html>
