@@ -31,14 +31,14 @@ public class BasicJDBCNoFramework {
     /**
      * jdbc.default.driverClassName=oracle.jdbc.driver.OracleDriver <br>
      * jdbc.default.url=jdbc:oracle:thin:@127.0.0.1:1623:prtstg <br>
-     * jdbc.default.username=cwtprtqa <br>
-     * jdbc.default.password=cwtprtqa$123 <br>
+     * jdbc.default.username=**** <br>
+     * jdbc.default.password=**** <br>
      */
 
     private String driverClassName = "oracle.jdbc.driver.OracleDriver";
     private String jdbcURL = "jdbc:oracle:thin:@localhost:21623:pttrvqa";
-    private String username = "cwtprtqa";
-    private String password = "cwtprtqa$123";
+    private String username = "****";
+    private String password = "****";
 
     private void cwtPortalDBJDBC() {
         try {
