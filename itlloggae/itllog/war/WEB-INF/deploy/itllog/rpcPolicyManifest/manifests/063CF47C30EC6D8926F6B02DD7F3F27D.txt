@@ -1,2 +1,0 @@
-serviceClass: com.sxw.itl.log.client.GreetingService
-path: 32D0B62454115FC7CB02CB6C2384D69F.gwt.rpc

@@ -1,3 +1,0 @@
-# Module itllog
-# RPC service class, partial path of RPC policy file
-com.sxw.itl.log.client.GreetingService, 32D0B62454115FC7CB02CB6C2384D69F.gwt.rpc

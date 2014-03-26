@@ -69,8 +69,11 @@
 	 var rTem=Math.floor((Math.random()*1000)+1);
 	 var logID=timeStamp+rTem;
 	 //alert("|"+what+"|"+comment+"|"+how+"|"+why+"|"+timeStamp+"|"+rTem);
+	 if(where==""){
+		 where="COVS,office,Shanghai,CN";
+	 }
 	 var dateV=$("#datepicker").val();
-	 var logStrTmp={"logID":logID,"type":"log","what":what,"comment":comment,"how":how,"why":why,"when":dateV,"who":who,"labels":label};
+	 var logStrTmp={"logID":logID,"type":"log","what":what,"comment":comment,"how":how,"why":why,"when":dateV,"who":who,"where":where,"labels":label};
 	 var logStr=JSON.stringify(logStrTmp);
 	 //alert("alert:"+logStr);
 	 $("#showCurrentLog").html(logStr);
@@ -78,57 +81,69 @@
     	
  
     </script>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 	<div>
 	<p></p>
 	<div>
-	<input type="text" onkeydown="" name="fromLoc" id="fromLoc" onblur="cancelQueryFrom()" onfocus="queryFrom()"/><br>
-	<div id="locationListFrom" style="display: none;">
-	<select>
-	<option>pvg-Beijing</option>
-	</select>
+	<input type="text" onkeydown="" name="fromLocGMS" id="fromLocGMS" onfocus="geolocate('fromLocGMS')" size="100" placeholder="search locations by google map service"/>
+	<input type="hidden" id="fromLocGMSHiddenValue"></input>
+	<br><br>
+	<br>
 	</div>
-	<input type="text" onkeydown="" name="toLoc" id="toLoc" onblur="cancelQueryTo()" onfocus="queryTo()"/>
-	</div>
-		<script>
-	var waitingFlag=false;
-	var fromInterval;
-	var toInterval;
-	function queryFromLocation(){
-		var fromLoc=$("#fromLoc").val();
-		if(fromLoc.length<2){
-			return false;
-		}else{
-			alert(fromLoc+":call query service");
+	<script>
+		//integrat with google map service
+		var placeSearch, autocomplete;
+		var componentForm = {
+		  street_number: 'short_name',
+		  route: 'long_name',
+		  locality: 'long_name',
+		  administrative_area_level_1: 'short_name',
+		  country: 'long_name',
+		  postal_code: 'short_name'
+		};
+
+		function geolocate(sourceID) {
+			  autocomplete = new google.maps.places.Autocomplete(
+			      (document.getElementById(sourceID)),
+			      { types: ['geocode'] });
+			  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+			    fillInAddress(sourceID);
+			  });
 		}
-	}
-	function queryFrom(){
-		fromInterval=setInterval(queryFromLocation, 1000)
-		//alert(fromInterval);
-	}
-	function cancelQueryFrom(){
-		window.clearInterval(fromInterval);
-		//alert(fromInterval);
-	}
-	
-	function queryToLocation(){
-		var fromLoc=$("#toLoc").val();
-		if(fromLoc.length<2){
-			return false;
-		}else{
-			alert(fromLoc+":call query service");
+
+		function fillInAddress(sourceID) {
+		locHiddenId=sourceID+"HiddenValue";
+		document.getElementById(locHiddenId).value=document.getElementById(sourceID).value;
+		  var place = autocomplete.getPlace();
+		  var placeNameTmp="";
+		  var addressTypeTmp="";
+		  
+		  for (var component in componentForm) {
+		    document.getElementById(component).value = '';
+		    document.getElementById(component).disabled = false;
+		  }
+
+		  for (var i = 0; i < place.address_components.length; i++) {
+		    var addressType = place.address_components[i].types[0];
+			addressTypeTmp=addressTypeTmp+addressType+",";
+		    if (componentForm[addressType]) {
+		      var val = place.address_components[i][componentForm[addressType]];
+		      document.getElementById(addressType).value = val;
+		    }
+			
+			if(place.address_components[i]['long_name']){
+				placeNameTmp=placeNameTmp+place.address_components[i]['long_name']+",";
+			}else if(place.address_components[i]['short_name']){
+				placeNameTmp=placeNameTmp+place.address_components[i]['short_name']+",";
+			}
+		  }
 		}
-	}
-	function queryTo(){
-		toInterval=setInterval(queryToLocation, 1000)
-		//alert(toInterval);
-	}
-	function cancelQueryTo(){
-		window.clearInterval(toInterval);
-		//alert(toInterval);
-	}
 	</script>
-	<p></p><p></p>
-	<p><a href="http://www.weibo.com/stephenks">Stephen Xianwei Zhang</a></p>
+	<p></p>
+	
+	<p></p>
+	<p><a href="http://stephenxianweizhang.appspot.com/">Stephen Xianwei Zhang</a></p>
 	</div>
 </body>
 </html>
