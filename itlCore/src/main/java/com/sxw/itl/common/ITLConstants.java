@@ -16,6 +16,10 @@ public class ITLConstants {
     public static String securityDefaultTransformation = "AES";
     public static String MD5Transformation = "MD5";
     public static String AESTransformation = "AES";
+    
+    public interface specialChars{
+        String allSpecialCharsInKeyboard="`~!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?";
+    }
 
     public interface NumberBin {
         int bin2power24 = 16777216;

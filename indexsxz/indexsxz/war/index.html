@@ -188,12 +188,41 @@ google
 
 
 
+
+
+<tfoot>
+<tr>
+<td>
+<form method="get" action="">
+<input type="submit" value="Nothing" class="goog-button">
+</form>
+</td>
+<td colspan="4">
+<div class="ae-paginate">
+<span class="ae-disabled ae-paginate-prev"></span>
+<strong>
+
+</strong>
+<span class="ae-disabled ae-paginate-next"></span>
+</div>
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 	<div>
 	<p></p>
 	<div>
 	<input type="text" onkeydown="" name="fromLocGMS" id="fromLocGMS" onfocus="geolocate('fromLocGMS')" size="100" placeholder="search locations by google map service"/>
 	<input type="hidden" id="fromLocGMSHiddenValue"></input>
+	<form name="searchGS" id="searchGS" action="https://www.google.com/search" method="get">
+          <!-- <input value="apache.org" name="sitesearch" type="hidden"> -->
+          <input type="text" name="q" id="query" size="100" placeholder="google search service">
+          <input type="submit" id="submit" value="Search">
+    </form>
 	<br><br>
 	<br>
 	</div>
@@ -249,27 +278,7 @@ google
 	<p></p>
 
 
-<tfoot>
-<tr>
-<td>
-<form method="get" action="">
-<input type="submit" value="Nothing" class="goog-button">
-</form>
-</td>
-<td colspan="4">
-<div class="ae-paginate">
-<span class="ae-disabled ae-paginate-prev"></span>
-<strong>
 
-</strong>
-<span class="ae-disabled ae-paginate-next"></span>
-</div>
-</td>
-</tr>
-</tfoot>
-</table>
-</div>
-</div>
 <div id="ft">
 
 The CSS/JS is from <a href="https://appengine.google.com/css/compiled.188g.371661804981725060.css">google</a>, more detail can get from here|

@@ -19,15 +19,36 @@ public final class DateUtils {
     }
 
     static void test() {
-        tFormat();
+        tBT();
+    }
+
+    static void tBT() {
+        String d1 = "10-Jan-2014 00:00";
+        String d2 = "10-Jan-2014 00:30";
+        Date date1;
+        Date date2;
+        try {
+            date1 = parseDate("dd-MMM-yyyy HH:mm", d1);
+            date2 = parseDate("dd-MMM-yyyy HH:mm", d2);
+            if (date1.before(date2)) {
+                System.out.println("before");
+            } else {
+                System.out.println("false");
+            }
+        } catch (Exception e) {
+
+        }
     }
 
     static void tFormat() {
-        String d = "10-Jan-2014";
-        d = d.toUpperCase();
+        String d = "10-Jan-2014 00:00";
+        // d = d.toUpperCase();
         Date date;
         try {
-            date = new SimpleDateFormat("dd-MMM-yyyy").parse(d);
+            date = new SimpleDateFormat("dd-MMM-yyyy HH:mm").parse(d);
+            System.out.println(date);
+            d = "10-Jan-2014 23:59";
+            date = new SimpleDateFormat("dd-MMM-yyyy HH:mm").parse(d);
             System.out.println(date);
         } catch (ParseException e) {
             e.printStackTrace();

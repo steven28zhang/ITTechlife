@@ -42,9 +42,9 @@ public final class EscapeChars {
      * @param args
      */
     public static void main(String[] args) {
-        String str = "N'Zeto, Angola (ARZ)";
+        String str = "~`!@#$%^&*";
         System.out.println("CharacterIterator.DONE:" + CharacterIterator.DONE);
-        str = forOracleSQL(str);
+        str = escapeCharsForPrj(str);
 
         System.out.println("str:" + str);
     }
