@@ -17,7 +17,15 @@ public class JsonUtil {
      * @param args
      */
     public static void main(String[] args) {
-        parseTestLocJson();
+        tcwt();
+    }
+
+    static void tcwt() {
+        JSONObject json = (JSONObject) JSONSerializer
+                .toJSON("{'reqType':'ajax','reqSource':'travelerSearch','userGuid':'A:661C3A7'}");
+        String reqType = json.getString("reqSource");
+
+        System.out.println("reqType:" + reqType);
     }
 
     private static String createTestLocJson() {
@@ -47,7 +55,7 @@ public class JsonUtil {
         reqJSON = "{'reqType':'ajax','reqSource':'fromLoc','reqTripType':'flight','locName':'de\\''}";
         JSONObject json = (JSONObject) JSONSerializer.toJSON(reqJSON);
         String reqType = getStringFromJSON(json, "reqType");
-        String locName= getStringFromJSON(json, "locName");
+        String locName = getStringFromJSON(json, "locName");
         System.out.println("reqType:" + reqType);
         System.out.println("locName:" + locName);
         String reqSource = getStringFromJSON(json, "reqSource");

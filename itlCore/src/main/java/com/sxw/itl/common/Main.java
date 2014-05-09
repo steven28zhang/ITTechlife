@@ -26,17 +26,36 @@ public final class Main {
      * @param args
      */
     public static void main(String[] args) {
-        testString();
+        testStringArray();
+    }
+
+    static void testStringArray() {
+        String[] flags = { "none", "" };
+        System.out.println(flags[0]);
+        flags[1] = "US";
+        System.out.println(flags[1]);
+    }
+
+    static void testBoolean() {
+        if (new Boolean("true")) {
+            System.out.println("true");
+        } else {
+            System.out.println("false");
+        }
     }
 
     static void testString() {
+        String baseURL = "https://prv60.mykds.com/kdsInstance/redirect/MA/automation.ashx?";
+        baseURL = baseURL.replace("kdsInstance", "");
+        System.out.println("baseURL:" + baseURL);
+        System.out.println("abc?".indexOf("?") == ("abc?".length() - 1));
         String locName = "\"~!@#$%^&*()_+";
         String bkSupportChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 '-()/";
         final StringCharacterIterator iterator = new StringCharacterIterator(locName);
         char character = iterator.current();
         while (character != CharacterIterator.DONE) {
             if (bkSupportChars.indexOf(character) >= 0) {
-                System.out.println("character:|" + character+"|");
+                System.out.println("character:|" + character + "|");
             }
             character = iterator.next();
         }
