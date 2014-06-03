@@ -11,6 +11,17 @@ import org.apache.commons.lang.StringEscapeUtils;
  */
 public class StringUtils {
 
+    public static void main(String[] args) {
+        t1();
+    }
+
+    private static void t1() {
+        String baseURL = "https://prv60.mykds.com/kdsInstance/redirect/MA/automation.ashx?";
+        baseURL = baseURL.replace("kdsInstance", "KdsInstanceNonSyncvalue");
+        System.out.println("baseURL:" + baseURL);
+
+    }
+
     /**
      * 
      * @param obj
@@ -32,8 +43,4 @@ public class StringUtils {
         System.out.println(str);
     }
 
-    public static void main(String[] args) {
-        testStringEscapeUtils();
-
-    }
 }
