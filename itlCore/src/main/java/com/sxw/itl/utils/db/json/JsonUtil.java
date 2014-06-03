@@ -17,7 +17,15 @@ public class JsonUtil {
      * @param args
      */
     public static void main(String[] args) {
-        parseTestLocJson();
+        tcwt();
+    }
+
+    static void tcwt() {
+        JSONObject json = (JSONObject) JSONSerializer
+                .toJSON("{'reqType':'ajax','reqSource':'search','reqTripType':'doorToDoor','fromValue':'Shanghai, China','toValue':'Beijing, China','returnValue':'','departDate':'28-May-2014','departTime':'01:00','returnDate':'30-May-2014','returnTime':'04:30','dropOff':'false','userName':'[CWT]STEPHENZHANG','guid':'a:3fe92f90'}");
+        String reqType = json.getString("reqSource");
+
+        System.out.println("reqType:" + reqType);
     }
 
     private static String createTestLocJson() {
@@ -47,7 +55,7 @@ public class JsonUtil {
         reqJSON = "{'reqType':'ajax','reqSource':'fromLoc','reqTripType':'flight','locName':'de\\''}";
         JSONObject json = (JSONObject) JSONSerializer.toJSON(reqJSON);
         String reqType = getStringFromJSON(json, "reqType");
-        String locName= getStringFromJSON(json, "locName");
+        String locName = getStringFromJSON(json, "locName");
         System.out.println("reqType:" + reqType);
         System.out.println("locName:" + locName);
         String reqSource = getStringFromJSON(json, "reqSource");
