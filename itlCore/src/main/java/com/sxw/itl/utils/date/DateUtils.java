@@ -12,6 +12,10 @@ import java.util.Date;
  * 
  */
 public final class DateUtils {
+    private final static String dateFormat1 = "dd-MMM-yyyy";
+    private final static String dateFormat2 = "dd-MMM-yyyy HH:mm";
+    private final static String dateFormat3 = "yyyy-MM-dd";
+    private final static String dateFormat4 = "hh:mm";
 
     public static void main(String[] args) {
         test();
@@ -19,7 +23,24 @@ public final class DateUtils {
     }
 
     static void test() {
-        tBT();
+        prj1();
+    }
+
+    static void prj1() {
+        try {
+            final String date = "25-Apr-2014";
+            final String time = "00:00";
+            String dt = date + " " + time;
+            Date dTmp = new SimpleDateFormat(dateFormat2).parse(dt);
+            System.out.println("dt:" + dt + ":date:" + dTmp.toString());
+            SimpleDateFormat ft = new SimpleDateFormat(dateFormat3);
+            String returnVal = ft.format(dTmp);
+            ft = new SimpleDateFormat(dateFormat4);
+            returnVal = returnVal + "T" + ft.format(dTmp);
+            System.out.println("returnVal:" + returnVal);
+        } catch (Exception e) {
+
+        }
     }
 
     static void tBT() {
@@ -30,13 +51,17 @@ public final class DateUtils {
         try {
             date1 = parseDate("dd-MMM-yyyy HH:mm", d1);
             date2 = parseDate("dd-MMM-yyyy HH:mm", d2);
+            String dStr1 = formatDate("yyyy-MM-dd", date1);
+            String dStr2 = formatDate("yyyy-MM-dd", date2);
+            String dStr3 = formatDate("hh:mm", date2);
+            System.out.println("dStr1:" + dStr1 + ":dStr2:" + dStr2 + ":dStr3:" + dStr3);
             if (date1.before(date2)) {
                 System.out.println("before");
             } else {
                 System.out.println("false");
             }
         } catch (Exception e) {
-
+            System.out.println(e.getMessage());
         }
     }
 
